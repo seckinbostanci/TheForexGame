@@ -13,7 +13,7 @@ Begin VB.Form frmMain
    ScaleHeight     =   8445
    ScaleWidth      =   15135
    StartUpPosition =   2  'CenterScreen
-   Begin VB.CommandButton Command1 
+   Begin VB.CommandButton btnAddSymbol 
       Caption         =   "+"
       Height          =   375
       Left            =   1440
@@ -21,7 +21,7 @@ Begin VB.Form frmMain
       Top             =   7200
       Width           =   375
    End
-   Begin VB.TextBox Text1 
+   Begin VB.TextBox txtSymbol 
       BeginProperty Font 
          Name            =   "Arial"
          Size            =   12
@@ -38,7 +38,7 @@ Begin VB.Form frmMain
       Top             =   7200
       Width           =   1335
    End
-   Begin VB.ListBox List2 
+   Begin VB.ListBox listSymbol 
       BeginProperty Font 
          Name            =   "Arial"
          Size            =   12
@@ -183,6 +183,20 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim clientSocketCounter As Integer
+
+Private Sub btnAddSymbol_Click()
+
+Dim listSymbolCounter As Integer
+
+
+    For listSymbolCounter = 0 To listSymbol.ListCount - 1
+        If (InStr(CStr(listSymbol.List(listSymbolCounter)), CStr(txtSymbol.Text))) = 0 Then
+            listSymbol.AddItem (txtSymbol.Text)
+        End If
+    Next
+
+
+End Sub
 
 Private Sub ClientSocket_Close(Index As Integer)
 
