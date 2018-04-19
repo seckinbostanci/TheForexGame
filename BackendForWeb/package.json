@@ -9,7 +9,8 @@
     "author": "seckinbostanci@gmail.com",
     "license": "ISC",
     "dependencies": {
-      "socket.io": "^2.0.4"
+      "socket.io": "~2.1.0",
+      "express" : "^4.16.3"
     }
   }
   
