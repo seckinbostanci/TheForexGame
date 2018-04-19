@@ -258,5 +258,10 @@ Private Sub LoadSymbol()
 End Sub
 
 Private Sub txtSymbol_Change(Index As Integer)
-listLog.AddItem (txtSymbol(Index).LinkItem & "-" & txtSymbol(Index).Text & "-" & txtSymbol(Index).LinkTopic)
+On Error Resume Next
+listLog.AddItem (txtSymbol(Index).LinkItem & " | " & txtSymbol(Index).Text & " | " & Replace(CStr(txtSymbol(Index).LinkTopic), "MT4|", ""))
+Dim tempClient As Integer
+For tempClient = 1 To clientSocketCounter
+    ClientSocket(tempClient).SendData (txtSymbol(Index).LinkItem & ";" & txtSymbol(Index).Text & ";" & Replace(CStr(txtSymbol(Index).LinkTopic), "MT4|", ""))
+Next
 End Sub
