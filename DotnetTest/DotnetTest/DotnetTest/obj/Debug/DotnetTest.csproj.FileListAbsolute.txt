@@ -1,0 +1,10 @@
+C:\Users\seckinbostanci\Desktop\TheForexGame\DotnetTest\DotnetTest\DotnetTest\bin\Debug\DotnetTest.exe.config
+C:\Users\seckinbostanci\Desktop\TheForexGame\DotnetTest\DotnetTest\DotnetTest\bin\Debug\DotnetTest.exe
+C:\Users\seckinbostanci\Desktop\TheForexGame\DotnetTest\DotnetTest\DotnetTest\bin\Debug\DotnetTest.pdb
+C:\Users\seckinbostanci\Desktop\TheForexGame\DotnetTest\DotnetTest\DotnetTest\obj\Debug\DotnetTest.csprojResolveAssemblyReference.cache
+C:\Users\seckinbostanci\Desktop\TheForexGame\DotnetTest\DotnetTest\DotnetTest\obj\Debug\DotnetTest.Form1.resources
+C:\Users\seckinbostanci\Desktop\TheForexGame\DotnetTest\DotnetTest\DotnetTest\obj\Debug\DotnetTest.Properties.Resources.resources
+C:\Users\seckinbostanci\Desktop\TheForexGame\DotnetTest\DotnetTest\DotnetTest\obj\Debug\DotnetTest.csproj.GenerateResource.cache
+C:\Users\seckinbostanci\Desktop\TheForexGame\DotnetTest\DotnetTest\DotnetTest\obj\Debug\DotnetTest.csproj.CoreCompileInputs.cache
+C:\Users\seckinbostanci\Desktop\TheForexGame\DotnetTest\DotnetTest\DotnetTest\obj\Debug\DotnetTest.exe
+C:\Users\seckinbostanci\Desktop\TheForexGame\DotnetTest\DotnetTest\DotnetTest\obj\Debug\DotnetTest.pdb

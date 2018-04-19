@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Socket.IO chat</title>
+    </head>
+    <body>
+        <input type="text" id="token" name="token" /><br/>
+        <input type="button" id="login" name="login" />
+        <div id="messages"></div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script>
+            $(function () {
+                
+                $("#login").click(function(){
+                    console.log("aaa");
+                    var socket = io();
+                    socket.emit('auth', $('#token').val());
+                    socket.on('data', function (msg) {
+                        $('#messages').html(msg);
+                    });
+                });
+                
+            });
+        </script> 
+    </body>
+</html>
