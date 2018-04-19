@@ -3,22 +3,22 @@ Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Begin VB.Form frmMain 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Form1"
-   ClientHeight    =   8910
+   ClientHeight    =   4320
    ClientLeft      =   45
    ClientTop       =   390
-   ClientWidth     =   15135
+   ClientWidth     =   16695
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   8910
-   ScaleWidth      =   15135
+   ScaleHeight     =   4320
+   ScaleWidth      =   16695
    StartUpPosition =   2  'CenterScreen
    Begin VB.TextBox txtSymbol 
       Height          =   285
       Index           =   0
-      Left            =   120
+      Left            =   13560
       TabIndex        =   7
-      Top             =   8280
+      Top             =   4560
       Visible         =   0   'False
       Width           =   1455
    End
@@ -33,9 +33,9 @@ Begin VB.Form frmMain
          Strikethrough   =   0   'False
       EndProperty
       Height          =   3300
-      Left            =   120
+      Left            =   15120
       TabIndex        =   5
-      Top             =   4920
+      Top             =   720
       Width           =   1455
    End
    Begin VB.ListBox listLog 
@@ -94,14 +94,14 @@ Begin VB.Form frmMain
          Strikethrough   =   0   'False
       EndProperty
       Height          =   615
-      Left            =   120
+      Left            =   15120
       TabIndex        =   6
-      Top             =   4320
+      Top             =   120
       Width           =   1455
    End
    Begin VB.Line Line1 
       X1              =   120
-      X2              =   15000
+      X2              =   16560
       Y1              =   4200
       Y2              =   4200
    End
@@ -169,18 +169,6 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim clientSocketCounter As Integer
 
-Private Sub btnAddSymbol_Click()
-
-Dim listSymbolCounter As Integer
-
-    For listSymbolCounter = 0 To listSymbol.ListCount - 1
-        If (InStr(CStr(listSymbol.List(listSymbolCounter)), CStr(txtSymbol.Text))) = 0 Then
-            listSymbol.AddItem (txtSymbol.Text)
-        End If
-    Next
-
-End Sub
-
 Private Sub ClientSocket_Close(Index As Integer)
 
 Dim listClientCounter As Integer
@@ -221,15 +209,14 @@ Private Sub Form_Load()
 End Sub
 
 Private Sub LoadSymbol()
-
+On Error GoTo theErrorHandler
     Dim symbolNumber As Integer
     symbolNumber = 1
-    
     Dim lineNumber As Long
     Dim lineString As String
     lineNumber = FreeFile
-    'Open App.Path & "\list.txt" For Input As #ff
-    Open "C:\Users\seckinbostanci\Desktop\TheForexGame\Backend\Debug\symbol.lst" For Input As #lineNumber
+    Open CStr(App.Path & "\symbol.lst") For Input As #lineNumber
+'    Open "C:\Users\seckinbostanci\Desktop\TheForexGame\Backend\Debug\symbol.lst" For Input As #lineNumber
     Do While Not EOF(lineNumber)
            Line Input #lineNumber, lineString
            
@@ -254,7 +241,9 @@ Private Sub LoadSymbol()
            End If
     Loop
     Close #lineNumber
-
+    Exit Sub
+theErrorHandler:
+    MsgBox Err.Description
 End Sub
 
 Private Sub txtSymbol_Change(Index As Integer)
@@ -262,6 +251,6 @@ On Error Resume Next
 listLog.AddItem (txtSymbol(Index).LinkItem & " | " & txtSymbol(Index).Text & " | " & Replace(CStr(txtSymbol(Index).LinkTopic), "MT4|", ""))
 Dim tempClient As Integer
 For tempClient = 1 To clientSocketCounter
-    ClientSocket(tempClient).SendData (txtSymbol(Index).LinkItem & ";" & txtSymbol(Index).Text & ";" & Replace(CStr(txtSymbol(Index).LinkTopic), "MT4|", ""))
+    ClientSocket(tempClient).SendData (txtSymbol(Index).LinkItem & ";" & txtSymbol(Index).Text & ";" & Replace(CStr(txtSymbol(Index).LinkTopic), "MT4|", "") & ";")
 Next
 End Sub
